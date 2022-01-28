@@ -7,12 +7,6 @@ import org.springframework.context.annotation.Primary;
 
 import java.util.List;
 
-/**
- * @author George Varghese
- * @version 1.0
- * https://github.com/varghgeorge
- */
-
 @Primary
 @Configuration
 @EnableConfigurationProperties
@@ -65,8 +59,6 @@ public class SwaggerServicesConfig {
         public String toString() {
             return "SwaggerServices [name=" + name + ", url=" + url + ", version=" + version + "]";
         }
-
-
     }
 
 }
