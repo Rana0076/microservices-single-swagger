@@ -1,25 +1,29 @@
 ---
 info:
   component: Default Single Swagger Document Server for MicroService
-
+  version: "1.0.0"
+  title: My API title
+  description: "Awesome description"
 spring:
   profiles: default
 
 server:
-  port: 8014
+  port: 0000
 
-documentation: 
-  baseurl: http://localhost
-  swagger: 
-    services:   
-      - 
-        name: Service1
-        url: ${documentation.baseurl}:8040/v2/api-docs?group=service1
+documentation:
+  baseurl: http://app.fd.com
+  #baseurl: http://localhost:0000
+  swagger:
+    services:
+      -
+        name: QA
+        url: ${documentation.baseurl}/swagger/api/def/test-app
         version: 2.0
-      - 
-        name: Service2
-        url: ${documentation.baseurl}:8050/v2/api-docs?group=service2
+      -
+        name: Test
+        url: ${documentation.baseurl}/swagger/api/def/qa-app
         version: 2.0
-
- 
-    
+      -
+        name: Prod
+        url: ${documentation.baseurl}/swagger/api/def/prod-app
+        version: 2.0
