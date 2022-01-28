@@ -15,12 +15,6 @@ import org.springframework.stereotype.Component;
 import springfox.documentation.swagger.web.SwaggerResource;
 import springfox.documentation.swagger.web.SwaggerResourcesProvider;
 
-/**
- * @author George Varghese
- * @version 1.0
- * https://github.com/varghgeorge
- */
-
 @Component
 @Primary
 @EnableAutoConfiguration
@@ -37,22 +31,24 @@ public class GatewaySwaggerResourceProvider implements SwaggerResourcesProvider 
 
     //@Inject
     //private DiscoveryClient discoveryClient;
-    
+
     public GatewaySwaggerResourceProvider() {
 
     }
 
-	@Override
+
+
+        @Override
     public List<SwaggerResource> get() {
         List<SwaggerResource> resources = new ArrayList<>();
 
-        //Add the default swagger resource that correspond to the gateway's own swagger doc        
+        //Add the default swagger resource that correspond to the gateway's own swagger doc
         //resources.add(swaggerResource("Default", env.getRequiredProperty("url"), "2.0"));
 
         swaggerServiceList.getServices().forEach(service -> {
-        	resources.add(swaggerResource(service.getName(),service.getUrl(), service.getVersion()));
+                resources.add(swaggerResource(service.getName(),service.getUrl(), service.getVersion()));
         });
-        
+
         //Add the registered microservices swagger docs as additional swagger resources
         //Map<String, String> routes = routeLocator.getRoutes();
         //routes.forEach((path, serviceId) -> {
@@ -67,8 +63,8 @@ public class GatewaySwaggerResourceProvider implements SwaggerResourcesProvider 
         swaggerResource.setName(name);
         swaggerResource.setLocation(location);
         swaggerResource.setSwaggerVersion(version);
-        return swaggerResource;	
+        return swaggerResource;
     }
-    
+
 
 }
